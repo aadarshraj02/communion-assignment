@@ -6,8 +6,8 @@ import Header from "./components/Header";
 const App = () => {
   return (
     <Router>
+      <Header />
       <Routes>
-        <Header />
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />
       </Routes>
