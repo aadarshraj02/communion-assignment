@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search } from "lucide-react";
+import { Search, Plus } from "lucide-react";
 import eventsData from "../data/events";
 import EventList from "../components/EventList";
+import AddEventModal from "../components/AddEventModal";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,8 +21,22 @@ const itemVariants = {
 const Events = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [events, setEvents] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const filteredEvents = eventsData.filter((event) => {
+  useEffect(() => {
+    const storedEvents =
+      JSON.parse(localStorage.getItem("events")) || eventsData;
+    setEvents(storedEvents);
+  }, []);
+
+  const handleAddEvent = (newEvent) => {
+    const updatedEvents = [newEvent, ...events];
+    setEvents(updatedEvents);
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+  };
+
+  const filteredEvents = events.filter((event) => {
     const matchesSearch =
       event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -54,7 +69,7 @@ const Events = () => {
         </p>
       </motion.div>
 
-      <motion.div className=" p-6 rounded-xl mb-10" variants={itemVariants}>
+      <motion.div className="p-6 rounded-xl mb-10" variants={itemVariants}>
         <div className="flex flex-col md:flex-row gap-4">
           <div className="relative flex-grow">
             <Search className="absolute left-3 top-3 text-gray-400" size={20} />
@@ -81,6 +96,21 @@ const Events = () => {
       </motion.div>
 
       <EventList events={filteredEvents} />
+
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="fixed bottom-6 right-6 bg-blue-600 text-white p-4 cursor-pointer flex rounded-full shadow-lg hover:bg-blue-700 transition"
+      >
+        <Plus size={24} /> Add Event
+      </button>
+
+      {isModalOpen && (
+        <AddEventModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onAddEvent={handleAddEvent}
+        />
+      )}
     </motion.div>
   );
 };
