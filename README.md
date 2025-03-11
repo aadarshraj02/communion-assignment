@@ -1,12 +1,31 @@
-# React + Vite
+# Communion Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Communion Hub is a simple and interactive event management app designed to help communities organize and discover religious, social, and charity events. Built with **React, Tailwind CSS, and Framer Motion**, it offers a seamless and visually appealing user experience.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📅 **Event Management** – Add, filter, and search for events easily.
+- 🎨 **Modern UI** – Responsive design with smooth animations.
+- 💾 **Local Storage Support** – Events persist without needing a database.
+- ⚡ **Fast & Lightweight** – Optimized performance with minimal dependencies.
 
-## Expanding the ESLint configuration
+## 🌐 Live Demo
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    https://communion-assignment-nine.vercel.app/
+
+## 🚀 Tech Stack
+
+- **Frontend:** React, Tailwind CSS, Framer Motion
+- **State Management:** useState
+- **Deployment:** Vercel / Netlify
+
+## 📦 Installation & Setup
+
+Clone the repository:
+
+```sh
+git clone https://github.com/aadarshraj02/communion-assignment
+cd communion-hub
+npm install
+npm run dev
+```
