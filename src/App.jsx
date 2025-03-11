@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Header from "./components/Header";
 import About from "./pages/About";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
+      <Footer />
     </Router>
   );
 };
